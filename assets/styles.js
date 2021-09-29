@@ -12,21 +12,6 @@ export default StyleSheet.create({
 		height: "35%",
 		alignSelf: "center",
 	},
-	textTorba: {
-		fontFamily: "Yellowtail",
-		fontSize: 96,
-		marginTop: "20%",
-		color: "#DBB364",
-		alignSelf: "center",
-		width: "50%",
-	},
-	textSlogan: {
-		fontFamily: "Poppins",
-		fontSize: 18,
-		color: "#FFFFFF",
-		alignSelf: "center",
-		width: "45%",
-	},
 	buttonKaydol: {
 		backgroundColor: "#DBB364",
 		marginTop: "10%",
@@ -184,12 +169,7 @@ export default StyleSheet.create({
 		marginBottom: 15,
 		textAlign: "center",
 	},
-	view: {
-		backgroundColor: "#50A162",
-		flexDirection: "column",
-		flex: 1,
-	},
-	viewTorba: { height: windowHeight / 2 },
+
 	textTorba: {
 		fontFamily: "Yellowtail",
 		fontSize: windowWidth / 4,
@@ -208,6 +188,7 @@ export default StyleSheet.create({
 	},
 	componentsView: { height: "100%" },
 	inputViewEmail: {
+		marginTop: "15%",
 		height: windowHeight / 10,
 		width: "75%",
 		backgroundColor: "#DBB364",
@@ -215,6 +196,14 @@ export default StyleSheet.create({
 		alignSelf: "center",
 	},
 	inputViewPassword: {
+		height: windowHeight / 10,
+		width: "75%",
+		backgroundColor: "#DBB364",
+		borderRadius: 20,
+		alignSelf: "center",
+		marginTop: "5%",
+	},
+	inputViewUsername: {
 		height: windowHeight / 10,
 		width: "75%",
 		backgroundColor: "#DBB364",
@@ -234,6 +223,17 @@ export default StyleSheet.create({
 		flexDirection: "row",
 	},
 	inputPassword: {
+		fontFamily: "Poppins",
+		color: "white",
+		fontSize: windowWidth / 22,
+		alignSelf: "center",
+		height: "100%",
+		width: "100%",
+		marginStart: "6%",
+		alignItems: "center",
+		flexDirection: "row",
+	},
+	inputUsername: {
 		fontFamily: "Poppins",
 		color: "white",
 		fontSize: windowWidth / 22,
@@ -274,7 +274,23 @@ export default StyleSheet.create({
 		justifyContent: "center",
 		flexDirection: "row",
 	},
+	signupButton: {
+		width: "60%",
+		height: windowHeight / 10,
+		backgroundColor: "#DBB364",
+		borderRadius: 7,
+		alignSelf: "center",
+		alignItems: "center",
+		justifyContent: "center",
+		flexDirection: "row",
+		marginTop: "10%",
+	},
 	textLoginButton: {
+		fontFamily: "Poppins",
+		fontSize: windowWidth / 22,
+		color: "white",
+	},
+	textSignupButton: {
 		fontFamily: "Poppins",
 		fontSize: windowWidth / 22,
 		color: "white",

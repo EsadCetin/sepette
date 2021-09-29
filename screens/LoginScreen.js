@@ -42,7 +42,7 @@ const WelcomeScreen = ({ navigation }) => {
 			<DismissKeyboard>
 				<KeyboardAvoidingView enabled behavior={"position"} style={styles.view}>
 					<StatusBar />
-					<View style={styles.viewTorba}>
+					<View>
 						<Text style={styles.textTorba}>torba</Text>
 						<Text style={styles.textSlogan}>torbada fırsat var</Text>
 					</View>
@@ -53,21 +53,24 @@ const WelcomeScreen = ({ navigation }) => {
 								placeholderTextColor={"white"}
 								selectionColor={"white"}
 								style={styles.inputEmail}
+								keyboardType={"email-address"}
 							></TextInput>
 						</View>
 						<View style={styles.inputViewPassword}>
 							<TextInput
+								secureTextEntry={true}
 								placeholder={"Şifre"}
 								maxLength={16}
 								placeholderTextColor={"white"}
 								selectionColor={"#50A162"}
 								style={styles.inputPassword}
-								onPressOut={Keyboard.dismiss()}
 							></TextInput>
 						</View>
-						<TouchableOpacity style={styles.viewForgotPassword}>
-							<Text style={styles.forgotPassword}>Şifremi Unuttum</Text>
-						</TouchableOpacity>
+						<View>
+							<TouchableOpacity style={styles.viewForgotPassword}>
+								<Text style={styles.forgotPassword}>Şifremi Unuttum</Text>
+							</TouchableOpacity>
+						</View>
 						<TouchableOpacity style={styles.loginButton}>
 							<Text style={styles.textLoginButton}>Giriş Yap</Text>
 						</TouchableOpacity>
