@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
-import styles from "../assets/styles";
+import styles from "../assets/styles/WelcomeScreenStyles";
 
 const WelcomeScreen = ({ navigation }) => {
 	const [modalVisible, setModalVisible] = useState(false);
@@ -29,7 +29,7 @@ const WelcomeScreen = ({ navigation }) => {
 		return (
 			<View style={styles.view}>
 				<StatusBar />
-				<View style={styles.viewName}>
+				<View>
 					<Text style={styles.textTorba}>torba</Text>
 					<Text style={styles.textSlogan}>torbada fırsat var</Text>
 				</View>

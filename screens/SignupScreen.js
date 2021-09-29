@@ -17,7 +17,7 @@ import {
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import KeyboardWrapper from "../components/KeyboardWrapper";
-import styles from "../assets/styles";
+import styles from "../assets/styles/SignupScreenStyles";
 
 const DismissKeyboard = ({ children }) => (
 	<TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -44,7 +44,7 @@ const SignupScreen = ({ navigation }) => {
 			<DismissKeyboard>
 				<KeyboardAvoidingView enabled behavior={"position"} style={styles.view}>
 					<StatusBar />
-					<View>
+					<View style={styles.viewName}>
 						<Text style={styles.textTorba}>torba</Text>
 						<Text style={styles.textSlogan}>torbada fırsat var</Text>
 					</View>

@@ -16,7 +16,7 @@ import {
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import KeyboardWrapper from "../components/KeyboardWrapper";
-import styles from "../assets/styles";
+import styles from "../assets/styles/LoginScreenStyles";
 
 const DismissKeyboard = ({ children }) => (
 	<TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
