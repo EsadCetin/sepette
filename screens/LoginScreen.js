@@ -53,12 +53,10 @@ const WelcomeScreen = ({ navigation }) => {
 								placeholderTextColor={"white"}
 								selectionColor={"white"}
 								style={styles.inputEmail}
-								keyboardType={"email-address"}
 							></TextInput>
 						</View>
 						<View style={styles.inputViewPassword}>
 							<TextInput
-								secureTextEntry={true}
 								placeholder={"Şifre"}
 								maxLength={16}
 								placeholderTextColor={"white"}

@@ -56,12 +56,10 @@ const SignupScreen = ({ navigation }) => {
 								selectionColor={"white"}
 								selectionColor={"#50A162"}
 								style={styles.inputEmail}
-								keyboardType={"email-address"}
 							></TextInput>
 						</View>
 						<View style={styles.inputViewPassword}>
 							<TextInput
-								secureTextEntry={true}
 								placeholder={"Şifre"}
 								maxLength={16}
 								placeholderTextColor={"white"}
