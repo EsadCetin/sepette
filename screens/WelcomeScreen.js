@@ -1,9 +1,17 @@
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import React, { useState } from "react";
+import {
+	View,
+	Text,
+	StyleSheet,
+	TouchableOpacity,
+	Image,
+	Modal,
+} from "react-native";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 
 const WelcomeScreen = ({ navigation }) => {
+	const [modalVisible, setModalVisible] = useState(false);
 	let [fontsLoaded] = useFonts({
 		Yellowtail: require("../assets/fonts/Yellowtail-Regular.ttf"),
 		Poppins: require("../assets/fonts/Poppins-Regular.ttf"),
@@ -19,6 +27,44 @@ const WelcomeScreen = ({ navigation }) => {
 	} else {
 		return (
 			<View style={styles.view}>
+				<Modal
+					animationType="slide"
+					transparent={true}
+					visible={modalVisible}
+					onRequestClose={() => {
+						Alert.alert("Modal has been closed.");
+						setModalVisible(!modalVisible);
+					}}
+				>
+					<View style={styles.centeredView}>
+						<View style={styles.modalView}>
+							<Text style={styles.modalText}>
+								torba Hizmeti'ni kullanabilmek ve herhangi bir çekilişe
+								katılabilmek için 18 yaşında (veya kendi ülkenizdeki eş değer
+								asgari yaşta) veya daha büyük olmanız; kendi ülkenizde yasal
+								sorumluluk yaşının altındaysanız veliniz veya vasinizden izin
+								almış olmanız; bizimle bağlayıcı bir sözleşme imzalama yetkisine
+								sahip olmanız ve geçerli kanunlar kapsamında bu yönde bir
+								engelinizin olmaması ve Hizmet'in kullanılabilir olduğu bir
+								ülkede ikamet etmeniz gerekmektedir. Ayrıca, torba'ya
+								gönderdiğiniz her türlü kayıt bilgisinin gerçek, doğru, eksiksiz
+								olduğuna ve bu bilgileri her zaman bu şekilde tutmayı kabul
+								ettiğinize dair söz verirsiniz. Kendi ülkenizde yasal sorumluluk
+								yaşının altındaysanız bu Şartlar'ı sizin adınıza veliniz veya
+								vasiniz imzalamalıdır. Asgari yaş gereksinimlerine ilişkin ek
+								bilgilere kayıt sürecinde ulaşabilirsiniz. Asgari yaş
+								gereksinimlerini karşılamıyorsanız torba sizi bir kullanıcı
+								olarak kaydedemez.
+							</Text>
+							<TouchableOpacity
+								style={[styles.ReadButton]}
+								onPress={() => setModalVisible(!modalVisible)}
+							>
+								<Text style={styles.textStyle}>Okudum, onaylıyorum.</Text>
+							</TouchableOpacity>
+						</View>
+					</View>
+				</Modal>
 				<StatusBar />
 				<View style={styles.viewName}>
 					<Text style={styles.textTorba}>torba</Text>
@@ -35,7 +81,6 @@ const WelcomeScreen = ({ navigation }) => {
 								onPress={() => navigation.navigate("LoginScreen")}
 								style={styles.textLogin}
 							>
-								{" "}
 								Giriş Yap.
 							</Text>
 						</TouchableOpacity>
@@ -68,6 +113,11 @@ const WelcomeScreen = ({ navigation }) => {
 						<Text style={styles.textSocialApple}>Apple ID ile giriş yap</Text>
 					</TouchableOpacity>
 				</View>
+				<View style={{ alignSelf: "center", alignItems: "center" }}>
+					<TouchableOpacity onPress={() => setModalVisible(true)}>
+						<Text style={styles.textTerm}>Kullanım Hüküm ve Koşulları</Text>
+					</TouchableOpacity>
+				</View>
 				<View style={styles.viewOurSocials}>
 					<Text style={styles.textOurSocials}>Sosyal medyada Torba</Text>
 					<View
@@ -77,13 +127,13 @@ const WelcomeScreen = ({ navigation }) => {
 							justifyContent: "center",
 						}}
 					>
-						<TouchableOpacity style={{ alignSelf: "center", marginTop: "5%" }}>
+						<TouchableOpacity style={{ alignSelf: "center", marginTop: "2%" }}>
 							<Image
 								style={styles.tinyLogo}
 								source={require("../assets/icons/instagram.png")}
 							/>
 						</TouchableOpacity>
-						<TouchableOpacity style={{ marginStart: "20%", marginTop: "5%" }}>
+						<TouchableOpacity style={{ marginStart: "20%", marginTop: "2%" }}>
 							<Image
 								style={styles.tinyLogo}
 								source={require("../assets/icons/twitter.png")}
@@ -167,6 +217,12 @@ const styles = StyleSheet.create({
 		color: "#DBB364",
 		alignSelf: "center",
 	},
+	textTerm: {
+		fontFamily: "Poppins",
+		fontSize: 10,
+		color: "white",
+		alignSelf: "center",
+	},
 	viewSocialSignUps: {
 		flexDirection: "column",
 		height: "30%",
@@ -230,10 +286,46 @@ const styles = StyleSheet.create({
 	},
 	viewOurSocials: { height: "15%" },
 	textOurSocials: {
-		marginTop: "5%",
 		fontFamily: "Poppins",
 		fontSize: 16,
 		alignSelf: "center",
+	},
+	centeredView: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+		marginTop: 22,
+	},
+	modalView: {
+		margin: 20,
+		backgroundColor: "white",
+		borderRadius: 20,
+		padding: 35,
+		alignItems: "center",
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 2,
+		},
+		shadowOpacity: 0.25,
+		shadowRadius: 4,
+		elevation: 5,
+	},
+	ReadButton: {
+		borderRadius: 20,
+		padding: 10,
+		elevation: 2,
+		backgroundColor: "#DBB364",
+	},
+
+	textStyle: {
+		color: "white",
+		fontWeight: "bold",
+		textAlign: "center",
+	},
+	modalText: {
+		marginBottom: 15,
+		textAlign: "center",
 	},
 });
 
