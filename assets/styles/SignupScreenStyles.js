@@ -16,7 +16,7 @@ export default StyleSheet.create({
 		fontSize: 10,
 		color: "white",
 		alignSelf: "center",
-		marginTop: "2%",
+		marginTop: "5%",
 	},
 	centeredView: {
 		flex: 1,
@@ -51,7 +51,7 @@ export default StyleSheet.create({
 		textAlign: "center",
 	},
 	modalText: {
-		marginBottom: 15,
+		marginBottom: "10%",
 		textAlign: "center",
 	},
 	textTorba: {
@@ -135,7 +135,7 @@ export default StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 		flexDirection: "row",
-		marginTop: "10%",
+		marginTop: "5%",
 	},
 	textSignupButton: {
 		fontFamily: "Poppins",
