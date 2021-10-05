@@ -16,7 +16,7 @@ const MyProfileScreen = ({ navigation }) => {
 	const [profilePhoto, setProfilePhoto] = useState();
 	const [loading, setLoading] = useState(true);
 
-	const getProduct = async () => {
+	const getUser = async () => {
 		await db
 			.collection("users")
 			.doc("ei0bH0PUTjhiElzdp3xF")
@@ -32,7 +32,7 @@ const MyProfileScreen = ({ navigation }) => {
 				}
 			});
 	};
-	getProduct();
+	getUser();
 	if (loading) {
 		return (
 			<View

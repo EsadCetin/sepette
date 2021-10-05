@@ -26,8 +26,8 @@ export default StyleSheet.create({
 		marginTop: "1%",
 	},
 	tinyLogoFavorites: {
-		width: 20,
-		height: 20,
+		height: 22,
+		aspectRatio: 1,
 	},
 
 	tinyBorderLogo: {
@@ -57,9 +57,10 @@ export default StyleSheet.create({
 	ProductTicket: {
 		position: "absolute",
 		right: "9%",
-		bottom: "5%",
+		bottom: "1%",
 		fontSize: 14,
 		fontFamily: "Poppins",
+		color: "black",
 	},
 	ProductSeller: {
 		position: "absolute",

@@ -64,7 +64,9 @@ export default function MyProductsScreen({ navigation }) {
 				data={DATA}
 				renderItem={({ item }) => (
 					<View>
-						<TouchableOpacity>
+						<TouchableOpacity
+							onPress={() => navigation.navigate("ProductScreen")}
+						>
 							<View style={styles.Product}>
 								<Image
 									style={styles.ProductPhoto}

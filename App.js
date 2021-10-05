@@ -13,6 +13,9 @@ import MyProductsScreen from "./screens/MyProductsScreen";
 import MyProfileScreen from "./screens/MyProfileScreen";
 import EditProfileScreen from "./screens/EditProfileScreen";
 import { ActivityIndicator } from "react-native-paper";
+import MyPicksScreen from "./screens/MyPicksScreen";
+import FavoritesScreen from "./screens/FavoritesScreen";
+import ProductScreen from "./screens/ProductScreen";
 
 const Stack = createStackNavigator();
 
@@ -34,11 +37,7 @@ function MyStack() {
 				options={{ headerShown: false }}
 				component={SignupScreen}
 			/>
-			<Stack.Screen
-				name="HomeScreen"
-				options={{ headerShown: false }}
-				component={HomeScreen}
-			/>
+
 			<Stack.Screen
 				name="MyProductsScreen"
 				options={{ headerShown: false }}
@@ -58,6 +57,26 @@ function MyStack() {
 				name="ProfileScreen"
 				options={{ headerShown: false }}
 				component={ProfileScreen}
+			/>
+			<Stack.Screen
+				name="MyPicksScreen"
+				options={{ headerShown: false }}
+				component={MyPicksScreen}
+			/>
+			<Stack.Screen
+				name="FavoritesScreen"
+				options={{ headerShown: false }}
+				component={FavoritesScreen}
+			/>
+			<Stack.Screen
+				name="HomeScreen"
+				options={{ headerShown: false }}
+				component={HomeScreen}
+			/>
+			<Stack.Screen
+				name="ProductScreen"
+				options={{ headerShown: false }}
+				component={ProductScreen}
 			/>
 		</Stack.Navigator>
 	);

@@ -133,7 +133,7 @@ const ProfileScreen = ({ navigation }) => {
 				<TouchableOpacity style={{ marginRight: "5%" }}>
 					<Image
 						style={styles.tinyBorderLogo}
-						source={require("../assets/icons/profile.png")}
+						source={require("../assets/icons/profileactive.png")}
 					/>
 				</TouchableOpacity>
 			</View>
