@@ -9,7 +9,7 @@ export default StyleSheet.create({
 	},
 	Header: {
 		justifyContent: "center",
-		backgroundColor: "#50A162",
+		backgroundColor: "#009AFF",
 		height: windowHeight / 10,
 		borderBottomLeftRadius: 18,
 		borderBottomRightRadius: 18,
@@ -18,7 +18,7 @@ export default StyleSheet.create({
 		alignSelf: "center",
 		fontFamily: "Yellowtail",
 		fontSize: 45,
-		color: "#DBB364",
+		color: "#ABEBC6",
 	},
 	tinyLogo: {
 		width: 30,
@@ -54,7 +54,7 @@ export default StyleSheet.create({
 		fontSize: 18,
 		fontFamily: "Poppins",
 	},
-	ProductTicket: {
+	ProductPrice: {
 		position: "absolute",
 		right: "9%",
 		bottom: "5%",
@@ -64,6 +64,7 @@ export default StyleSheet.create({
 	ProductSeller: {
 		position: "absolute",
 		alignSelf: "center",
+		marginRight: "10%",
 		top: "31%",
 		fontSize: 12,
 		fontFamily: "Poppins",

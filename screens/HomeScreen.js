@@ -7,20 +7,19 @@ import styles from "../assets/styles/HomeScreenStyles";
 const HomeScreen = ({ navigation }) => {
 	const [products, setProducts] = useState([]);
 	const [favorite, setFavorite] = useState(false);
-	const [requires, setRequires] = useState();
 
 	const DATA = products.map(
 		({
 			id,
-			data: { coverPhoto, productName, sellerName, requiredTicket, ticketSold },
+			data: { coverPhoto, productName, sellerName, price, productAbout },
 		}) => {
 			return {
 				key: id,
 				image: coverPhoto,
 				name: productName,
-				requiredTicket: requiredTicket,
-				ticketSold: ticketSold,
 				seller: sellerName,
+				price: price,
+				about: productAbout,
 			};
 		}
 	);
@@ -42,7 +41,7 @@ const HomeScreen = ({ navigation }) => {
 		return (
 			<SafeAreaView style={styles.view}>
 				<View style={styles.Header}>
-					<Text style={styles.HeaderText}>torba</Text>
+					<Text style={styles.HeaderText}>sepette</Text>
 					<View
 						style={{
 							alignSelf: "center",
@@ -83,7 +82,12 @@ const HomeScreen = ({ navigation }) => {
 					renderItem={({ item }) => (
 						<View>
 							<TouchableOpacity
-								onPress={() => navigation.navigate("ProductScreen")}
+								onPress={() =>
+									navigation.navigate("ProductScreen", {
+										item,
+										about: item.about,
+									})
+								}
 							>
 								<View style={styles.Product}>
 									<Image
@@ -96,13 +100,7 @@ const HomeScreen = ({ navigation }) => {
 									<Text style={styles.ProductName}>{item.name}</Text>
 								</View>
 								<Text style={styles.ProductSeller}>{item.seller}</Text>
-								<Text style={styles.ProductTicket}>
-									<Image
-										style={{ width: 15, height: 15 }}
-										source={require("../assets/icons/ticket.png")}
-									></Image>
-									{item.ticketSold}/{item.requiredTicket}
-								</Text>
+								<Text style={styles.ProductPrice}>{item.price}₺</Text>
 							</TouchableOpacity>
 							<TouchableOpacity
 								onPress={() => {
@@ -134,24 +132,13 @@ const HomeScreen = ({ navigation }) => {
 					<TouchableOpacity style={{ marginLeft: "5%" }}>
 						<Image
 							style={styles.tinyBorderLogo}
-							source={require("../assets/icons/homeactive.png")}
+							source={require("../assets/icons/home.png")}
 						/>
 					</TouchableOpacity>
 					<TouchableOpacity>
 						<Image
 							style={styles.tinyBorderLogo}
 							source={require("../assets/icons/search.png")}
-						/>
-					</TouchableOpacity>
-					<TouchableOpacity>
-						<Image
-							style={{
-								width: 54,
-								height: 54,
-								bottom: 20,
-								alignSelf: "center",
-							}}
-							source={require("../assets/icons/add.png")}
 						/>
 					</TouchableOpacity>
 					<TouchableOpacity>
@@ -170,13 +157,25 @@ const HomeScreen = ({ navigation }) => {
 						/>
 					</TouchableOpacity>
 				</View>
+				<View
+					style={{
+						backgroundColor: "#ABEBC6",
+						position: "absolute",
+						width: 35,
+						height: 35,
+						bottom: 3,
+						left: 20,
+						borderRadius: 20,
+						zIndex: -1,
+					}}
+				></View>
 			</SafeAreaView>
 		);
 	} else {
 		return (
 			<SafeAreaView style={styles.view}>
 				<View style={styles.Header}>
-					<Text style={styles.HeaderText}>torba</Text>
+					<Text style={styles.HeaderText}>sepette</Text>
 					<View
 						style={{
 							alignSelf: "center",
@@ -217,7 +216,12 @@ const HomeScreen = ({ navigation }) => {
 					renderItem={({ item }) => (
 						<View>
 							<TouchableOpacity
-								onPress={() => navigation.navigate("ProductScreen")}
+								onPress={() =>
+									navigation.navigate("ProductScreen", {
+										item,
+										about: item.about,
+									})
+								}
 							>
 								<View style={styles.Product}>
 									<Image
@@ -230,13 +234,7 @@ const HomeScreen = ({ navigation }) => {
 									<Text style={styles.ProductName}>{item.name}</Text>
 								</View>
 								<Text style={styles.ProductSeller}>{item.seller}</Text>
-								<Text style={styles.ProductTicket}>
-									<Image
-										style={{ width: 15, height: 15 }}
-										source={require("../assets/icons/ticket.png")}
-									></Image>
-									{item.ticketSold}/{item.requiredTicket}
-								</Text>
+								<Text style={styles.ProductPrice}>{item.price}₺</Text>
 							</TouchableOpacity>
 							<TouchableOpacity
 								onPress={() => {
@@ -268,7 +266,7 @@ const HomeScreen = ({ navigation }) => {
 					<TouchableOpacity style={{ marginLeft: "5%" }}>
 						<Image
 							style={styles.tinyBorderLogo}
-							source={require("../assets/icons/homeactive.png")}
+							source={require("../assets/icons/home.png")}
 						/>
 					</TouchableOpacity>
 					<TouchableOpacity>
@@ -277,21 +275,11 @@ const HomeScreen = ({ navigation }) => {
 							source={require("../assets/icons/search.png")}
 						/>
 					</TouchableOpacity>
-					<TouchableOpacity>
-						<Image
-							style={{
-								width: 54,
-								height: 54,
-								bottom: 20,
-								alignSelf: "center",
-							}}
-							source={require("../assets/icons/add.png")}
-						/>
-					</TouchableOpacity>
+
 					<TouchableOpacity>
 						<Image
 							style={styles.tinyBorderLogo}
-							source={require("../assets/icons/chat.png")}
+							source={require("../assets/icons/shopping_cart.png")}
 						/>
 					</TouchableOpacity>
 					<TouchableOpacity
@@ -304,6 +292,18 @@ const HomeScreen = ({ navigation }) => {
 						/>
 					</TouchableOpacity>
 				</View>
+				<View
+					style={{
+						backgroundColor: "#ABEBC6",
+						position: "absolute",
+						width: 35,
+						height: 35,
+						bottom: 3,
+						left: 20,
+						borderRadius: 20,
+						zIndex: -1,
+					}}
+				></View>
 			</SafeAreaView>
 		);
 	}

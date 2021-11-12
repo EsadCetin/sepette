@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import styles from "../assets/styles/ProfileScreenStyles";
 import { Avatar } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
+import { auth, db } from "../firebase";
 
 const ProfileScreen = ({ navigation }) => {
+	const [name, setName] = useState("");
+	const [image, setImage] = useState();
+	const getUser = async () => {
+		await db
+			.collection("users")
+			.doc(auth?.currentUser?.uid)
+			.get()
+			.then(function (doc) {
+				if (doc.exists) {
+					setName(doc.get("name"));
+					setImage(doc.get("profilePhoto"));
+				}
+			});
+	};
+	getUser();
+	const onSignoutPress = () => {
+		auth
+			.signOut()
+			.then(console.log("signed out"), navigation.navigate("WelcomeScreen"));
+	};
 	return (
 		<View style={styles.view}>
 			<View style={styles.Header}>
@@ -14,10 +35,10 @@ const ProfileScreen = ({ navigation }) => {
 				<Avatar
 					rounded
 					size={120}
-					source={require("../assets/icons/avatar.png")}
+					source={{ uri: image }}
 					containerStyle={styles.Avatar}
 				/>
-				<Text style={styles.Name}>Mehmet Esad Çetin</Text>
+				<Text style={styles.Name}>{name}</Text>
 				<View style={styles.ButtonBar}>
 					<TouchableOpacity
 						style={styles.Button}
@@ -30,18 +51,7 @@ const ProfileScreen = ({ navigation }) => {
 						<Text style={styles.ButtonText}>Bilgilerim</Text>
 					</TouchableOpacity>
 				</View>
-				<View style={styles.ButtonBar}>
-					<TouchableOpacity
-						style={styles.Button}
-						onPress={() => navigation.navigate("MyProductsScreen")}
-					>
-						<Image
-							style={styles.tinyLogo}
-							source={require("../assets/icons/shopping_cart.png")}
-						/>
-						<Text style={styles.ButtonText}>Ürünlerim</Text>
-					</TouchableOpacity>
-				</View>
+
 				<View style={styles.ButtonBar}>
 					<TouchableOpacity style={styles.Button}>
 						<Image
@@ -70,7 +80,22 @@ const ProfileScreen = ({ navigation }) => {
 					</TouchableOpacity>
 				</View>
 				<View style={styles.ButtonBar}>
-					<TouchableOpacity style={styles.Button}>
+					<TouchableOpacity
+						onPress={() => navigation.navigate("HelpScreen")}
+						style={styles.Button}
+					>
+						<Image
+							style={styles.tinyLogo}
+							source={require("../assets/icons/chat.png")}
+						/>
+						<Text style={styles.ButtonText}>Yardım</Text>
+					</TouchableOpacity>
+				</View>
+				<View style={styles.ButtonBar}>
+					<TouchableOpacity
+						onPress={() => navigation.navigate("AboutScreen")}
+						style={styles.Button}
+					>
 						<Image
 							style={styles.tinyLogo}
 							source={require("../assets/icons/info.png")}
@@ -88,7 +113,10 @@ const ProfileScreen = ({ navigation }) => {
 					</TouchableOpacity>
 				</View>
 				<View>
-					<TouchableOpacity style={styles.LogOut}>
+					<TouchableOpacity
+						onPress={() => onSignoutPress()}
+						style={styles.LogOut}
+					>
 						<Image
 							style={styles.tinyLogo}
 							source={require("../assets/icons/logout.png")}
@@ -115,27 +143,28 @@ const ProfileScreen = ({ navigation }) => {
 				</TouchableOpacity>
 				<TouchableOpacity>
 					<Image
-						style={{
-							width: 54,
-							height: 54,
-							bottom: 20,
-							alignSelf: "center",
-						}}
-						source={require("../assets/icons/add.png")}
-					/>
-				</TouchableOpacity>
-				<TouchableOpacity>
-					<Image
 						style={styles.tinyBorderLogo}
-						source={require("../assets/icons/chat.png")}
+						source={require("../assets/icons/shopping_cart.png")}
 					/>
 				</TouchableOpacity>
 				<TouchableOpacity style={{ marginRight: "5%" }}>
 					<Image
 						style={styles.tinyBorderLogo}
-						source={require("../assets/icons/profileactive.png")}
+						source={require("../assets/icons/profile.png")}
 					/>
 				</TouchableOpacity>
+				<View
+					style={{
+						backgroundColor: "#ABEBC6",
+						position: "absolute",
+						width: 35,
+						height: 35,
+						bottom: 3,
+						right: 20,
+						borderRadius: 20,
+						zIndex: -1,
+					}}
+				></View>
 			</View>
 		</View>
 	);

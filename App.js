@@ -9,13 +9,15 @@ import ProfileScreen from "./screens/ProfileScreen";
 import { useFonts } from "expo-font";
 import { Text, View } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
-import MyProductsScreen from "./screens/MyProductsScreen";
 import MyProfileScreen from "./screens/MyProfileScreen";
 import EditProfileScreen from "./screens/EditProfileScreen";
 import { ActivityIndicator } from "react-native-paper";
 import MyPicksScreen from "./screens/MyPicksScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
 import ProductScreen from "./screens/ProductScreen";
+import SetProfileScreen from "./screens/SetProfileScreen";
+import AboutScreen from "./screens/AboutScreen";
+import HelpScreen from "./screens/HelpScreen";
 
 const Stack = createStackNavigator();
 
@@ -36,12 +38,6 @@ function MyStack() {
 				name="SignupScreen"
 				options={{ headerShown: false }}
 				component={SignupScreen}
-			/>
-
-			<Stack.Screen
-				name="MyProductsScreen"
-				options={{ headerShown: false }}
-				component={MyProductsScreen}
 			/>
 			<Stack.Screen
 				name="MyProfileScreen"
@@ -78,6 +74,21 @@ function MyStack() {
 				options={{ headerShown: false }}
 				component={ProductScreen}
 			/>
+			<Stack.Screen
+				name="SetProfileScreen"
+				options={{ headerShown: false }}
+				component={SetProfileScreen}
+			/>
+			<Stack.Screen
+				name="AboutScreen"
+				options={{ headerShown: false }}
+				component={AboutScreen}
+			/>
+			<Stack.Screen
+				name="HelpScreen"
+				options={{ headerShown: false }}
+				component={HelpScreen}
+			/>
 		</Stack.Navigator>
 	);
 }
@@ -99,7 +110,7 @@ export default function App() {
 					flex: 1,
 				}}
 			>
-				<ActivityIndicator size="large" color="#50A162" />
+				<ActivityIndicator size="large" color="#009AFF" />
 			</View>
 		);
 	} else {

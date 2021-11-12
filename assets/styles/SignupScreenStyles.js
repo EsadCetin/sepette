@@ -4,7 +4,7 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 export default StyleSheet.create({
 	view: {
-		backgroundColor: "#50A162",
+		backgroundColor: "#009AFF",
 		flexDirection: "column",
 		flex: 1,
 	},
@@ -43,7 +43,7 @@ export default StyleSheet.create({
 		borderRadius: 20,
 		padding: 10,
 		elevation: 2,
-		backgroundColor: "#DBB364",
+		backgroundColor: "#ABEBC6",
 	},
 	textStyle: {
 		color: "white",
@@ -54,11 +54,11 @@ export default StyleSheet.create({
 		marginBottom: "10%",
 		textAlign: "center",
 	},
-	textTorba: {
+	textsepette: {
 		fontFamily: "Yellowtail",
 		fontSize: windowWidth / 4,
 		marginTop: windowHeight / 8,
-		color: "#DBB364",
+		color: "#ABEBC6",
 		alignSelf: "center",
 		justifyContent: "center",
 	},
@@ -73,14 +73,14 @@ export default StyleSheet.create({
 		marginTop: "15%",
 		height: windowHeight / 10,
 		width: "75%",
-		backgroundColor: "#DBB364",
+		backgroundColor: "#ABEBC6",
 		borderRadius: 20,
 		alignSelf: "center",
 	},
 	inputViewPassword: {
 		height: windowHeight / 10,
 		width: "75%",
-		backgroundColor: "#DBB364",
+		backgroundColor: "#ABEBC6",
 		borderRadius: 20,
 		alignSelf: "center",
 		marginTop: "5%",
@@ -88,7 +88,7 @@ export default StyleSheet.create({
 	inputViewUsername: {
 		height: windowHeight / 10,
 		width: "75%",
-		backgroundColor: "#DBB364",
+		backgroundColor: "#ABEBC6",
 		borderRadius: 20,
 		alignSelf: "center",
 		marginTop: "5%",
@@ -129,7 +129,7 @@ export default StyleSheet.create({
 	signupButton: {
 		width: "60%",
 		height: windowHeight / 10,
-		backgroundColor: "#DBB364",
+		backgroundColor: "#ABEBC6",
 		borderRadius: 7,
 		alignSelf: "center",
 		alignItems: "center",

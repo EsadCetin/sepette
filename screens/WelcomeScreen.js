@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
 	View,
 	Text,
@@ -10,16 +10,24 @@ import {
 
 import { StatusBar } from "expo-status-bar";
 import styles from "../assets/styles/WelcomeScreenStyles";
+import { auth } from "../firebase";
 
 const WelcomeScreen = ({ navigation }) => {
 	const [modalVisible, setModalVisible] = useState(false);
-
+	useEffect(() => {
+		const unsubscribe = auth.onAuthStateChanged((authUser) => {
+			if (authUser) {
+				navigation.replace("HomeScreen");
+			}
+		});
+		return unsubscribe;
+	}, []);
 	return (
 		<View style={styles.view}>
 			<StatusBar />
 			<View>
-				<Text style={styles.textTorba}>torba</Text>
-				<Text style={styles.textSlogan}>torbada fırsat var</Text>
+				<Text style={styles.textsepette}>sepette</Text>
+				<Text style={styles.textSlogan}>Alışverişin en kolay yolu</Text>
 			</View>
 			<View style={styles.viewKaydol}>
 				<TouchableOpacity
@@ -70,29 +78,7 @@ const WelcomeScreen = ({ navigation }) => {
 					<Text style={styles.textTerm}>Kullanım Hüküm ve Koşulları</Text>
 				</TouchableOpacity>
 			</View>
-			<View style={styles.viewOurSocials}>
-				<Text style={styles.textOurSocials}>Sosyal medyada Torba</Text>
-				<View
-					style={{
-						flexDirection: "row",
-						alignItems: "center",
-						justifyContent: "center",
-					}}
-				>
-					<TouchableOpacity style={{ alignSelf: "center", marginTop: "2%" }}>
-						<Image
-							style={styles.tinyLogo}
-							source={require("../assets/icons/instagram.png")}
-						/>
-					</TouchableOpacity>
-					<TouchableOpacity style={{ marginStart: "20%", marginTop: "2%" }}>
-						<Image
-							style={styles.tinyLogo}
-							source={require("../assets/icons/twitter.png")}
-						/>
-					</TouchableOpacity>
-				</View>
-			</View>
+
 			<Modal
 				animationType="slide"
 				transparent={true}
@@ -105,21 +91,8 @@ const WelcomeScreen = ({ navigation }) => {
 				<View style={styles.centeredView}>
 					<View style={styles.modalView}>
 						<Text style={styles.modalText}>
-							torba Hizmeti'ni kullanabilmek ve herhangi bir çekilişe
-							katılabilmek için 18 yaşında (veya kendi ülkenizdeki eş değer
-							asgari yaşta) veya daha büyük olmanız; kendi ülkenizde yasal
-							sorumluluk yaşının altındaysanız veliniz veya vasinizden izin
-							almış olmanız; bizimle bağlayıcı bir sözleşme imzalama yetkisine
-							sahip olmanız ve geçerli kanunlar kapsamında bu yönde bir
-							engelinizin olmaması ve Hizmet'in kullanılabilir olduğu bir ülkede
-							ikamet etmeniz gerekmektedir. Ayrıca, torba'ya gönderdiğiniz her
-							türlü kayıt bilgisinin gerçek, doğru, eksiksiz olduğuna ve bu
-							bilgileri her zaman bu şekilde tutmayı kabul ettiğinize dair söz
-							verirsiniz. Kendi ülkenizde yasal sorumluluk yaşının altındaysanız
-							bu Şartlar'ı sizin adınıza veliniz veya vasiniz imzalamalıdır.
-							Asgari yaş gereksinimlerine ilişkin ek bilgilere kayıt sürecinde
-							ulaşabilirsiniz. Asgari yaş gereksinimlerini karşılamıyorsanız
-							torba sizi bir kullanıcı olarak kaydedemez.
+							sepette uygulamasıyla alışveriş yapabilmek için 18 yaşından büyük
+							olmanız gerekmektedir.
 						</Text>
 						<TouchableOpacity
 							style={[styles.ReadButton]}

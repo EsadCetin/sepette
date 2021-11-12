@@ -17,14 +17,14 @@ const DismissKeyboard = ({ children }) => (
 	</TouchableWithoutFeedback>
 );
 
-const WelcomeScreen = ({ navigation }) => {
+const LoginScreen = ({ navigation }) => {
 	return (
 		<DismissKeyboard>
 			<KeyboardAvoidingView enabled behavior={"position"} style={styles.view}>
 				<StatusBar />
 				<View>
-					<Text style={styles.textTorba}>torba</Text>
-					<Text style={styles.textSlogan}>torbada fırsat var</Text>
+					<Text style={styles.textsepette}>sepette</Text>
+					<Text style={styles.textSlogan}>sepetteda fırsat var</Text>
 				</View>
 				<View style={styles.componentsView}>
 					<View style={styles.inputViewEmail}>
@@ -33,6 +33,7 @@ const WelcomeScreen = ({ navigation }) => {
 							placeholderTextColor={"white"}
 							selectionColor={"white"}
 							style={styles.inputEmail}
+							keyboardType="email-address"
 						></TextInput>
 					</View>
 					<View style={styles.inputViewPassword}>
@@ -40,8 +41,9 @@ const WelcomeScreen = ({ navigation }) => {
 							placeholder={"Şifre"}
 							maxLength={16}
 							placeholderTextColor={"white"}
-							selectionColor={"#50A162"}
+							selectionColor={"#009AFF"}
 							style={styles.inputPassword}
+							secureTextEntry={true}
 						></TextInput>
 					</View>
 					<View>
@@ -61,4 +63,4 @@ const WelcomeScreen = ({ navigation }) => {
 	);
 };
 
-export default WelcomeScreen;
+export default LoginScreen;

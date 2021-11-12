@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { Image } from "react-native";
+import { Image, TouchableWithoutFeedback } from "react-native";
 import { View, Text } from "react-native";
 import { AutoSizeText, ResizeTextMode } from "react-native-auto-size-text";
 import { Avatar } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import styles from "../assets/styles/MyProfileScreenStyles";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import { ActivityIndicator } from "react-native-paper";
 
 const MyProfileScreen = ({ navigation }) => {
 	const [name, setName] = useState("");
-	const [surName, setSurName] = useState("");
+	const [adress, setAdress] = useState("");
 	const [email, setEmail] = useState("");
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [profilePhoto, setProfilePhoto] = useState();
@@ -19,12 +19,12 @@ const MyProfileScreen = ({ navigation }) => {
 	const getUser = async () => {
 		await db
 			.collection("users")
-			.doc("ei0bH0PUTjhiElzdp3xF")
+			.doc(auth?.currentUser?.uid)
 			.get()
 			.then(function (doc) {
 				if (doc.exists) {
 					setName(doc.get("name"));
-					setSurName(doc.get("surName"));
+					setAdress(doc.get("adress"));
 					setEmail(doc.get("email"));
 					setPhoneNumber(doc.get("phoneNumber"));
 					setProfilePhoto(doc.get("profilePhoto"));
@@ -43,13 +43,21 @@ const MyProfileScreen = ({ navigation }) => {
 					flex: 1,
 				}}
 			>
-				<ActivityIndicator size="large" color="#50A162" />
+				<ActivityIndicator size="large" color="#009AFF" />
 			</View>
 		);
 	} else {
 		return (
 			<View style={styles.view}>
 				<View style={styles.Header}>
+					<View>
+						<TouchableWithoutFeedback onPress={() => navigation.goBack()}>
+							<Image
+								style={styles.backLogo}
+								source={require("../assets/icons/back.png")}
+							/>
+						</TouchableWithoutFeedback>
+					</View>
 					<Text style={styles.HeaderText}>Bilgilerim</Text>
 					<View
 						style={{
@@ -91,7 +99,7 @@ const MyProfileScreen = ({ navigation }) => {
 						numberOfLines={1}
 						mode={ResizeTextMode.max_lines}
 					>
-						{surName}
+						{adress}
 					</AutoSizeText>
 				</View>
 				<View style={styles.Bar}>
